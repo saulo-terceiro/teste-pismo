@@ -1,7 +1,0 @@
-package main.com.example.demo.exceptions;
-
-public class TransactionValidadorException extends Throwable {
-    public TransactionValidadorException(String s) {
-        super(s);
-    }
-}
