@@ -33,10 +33,7 @@ public class TransactionServiceImpl implements TransactionService{
         Date eventDate = new Date();
         Transaction transaction = new Transaction(account,operationType,transactionRequestBody.getAmount(),eventDate);
 
-        if(operationType.getId().equals(OperationType.COMPRA_A_VISTA)
-        ||operationType.getId().equals(OperationType.COMPRA_PARCELADA)
-                || operationType.getId().equals(OperationType.SAQUE)
-        ){
+        if(operationType.getTipo().equals(OperationType.TIPO_DEBITO)){
             transaction.setAmount(-transactionRequestBody.getAmount());
         }
 

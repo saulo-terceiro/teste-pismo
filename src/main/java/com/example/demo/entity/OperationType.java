@@ -10,6 +10,10 @@ public class OperationType {
     public static Long SAQUE = 3L;
     public static Long PAGAMENTO = 4L;
 
+    public static String TIPO_DEBITO = "D";
+    public static String TIPO_CREDITO = "C";
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +22,20 @@ public class OperationType {
     @Column(name = "Description",nullable = false)
     private String description;
 
-    public OperationType(String compra_a_vista) {
-        this.setDescription(compra_a_vista);
+    @Column(name = "Tipo",nullable = false)
+    private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public OperationType(String description, String tipo) {
+        this.description = description;
+        this.tipo = tipo;
     }
 
     public OperationType() {

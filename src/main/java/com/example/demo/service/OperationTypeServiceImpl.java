@@ -29,10 +29,10 @@ public class OperationTypeServiceImpl implements OperationTypeService{
         try{
             getOperationType(1L);
         }catch (NoSuchElementException n){
-            OperationType operationTypeCompraAVista = new OperationType("COMPRA A VISTA");
-            OperationType operationTypeCompraParcelada = new OperationType("COMPRA PARCELADA");
-            OperationType operationTypeSaque = new OperationType("SAQUE");
-            OperationType operationTypePagamento = new OperationType("PAGAMENTO");
+            OperationType operationTypeCompraAVista = new OperationType("COMPRA A VISTA",OperationType.TIPO_DEBITO);
+            OperationType operationTypeCompraParcelada = new OperationType("COMPRA PARCELADA",OperationType.TIPO_DEBITO);
+            OperationType operationTypeSaque = new OperationType("SAQUE",OperationType.TIPO_DEBITO);
+            OperationType operationTypePagamento = new OperationType("PAGAMENTO",OperationType.TIPO_CREDITO);
             this.saveOperationType(operationTypeCompraAVista);
             this.saveOperationType(operationTypeCompraParcelada);
             this.saveOperationType(operationTypeSaque);
