@@ -1,14 +1,15 @@
 package test.java.com.example.demo.testcontroller;
 
-import main.java.com.example.demo.DemoApplication;
-import main.java.com.example.demo.controller.AccountController;
-import main.java.com.example.demo.controller.TransactionController;
-import main.java.com.example.demo.dtos.AccountResponseDto;
-import main.java.com.example.demo.dtos.TransactionDtoResponse;
-import main.java.com.example.demo.entity.Account;
-import main.java.com.example.demo.entity.OperationType;
-import main.java.com.example.demo.requestbody.TransactionRequestBody;
-import main.java.com.example.demo.service.OperationTypeService;
+
+import com.example.demo.DemoApplication;
+import com.example.demo.controller.AccountController;
+import com.example.demo.controller.TransactionController;
+import com.example.demo.dtos.AccountResponseDto;
+import com.example.demo.dtos.TransactionDtoResponse;
+import com.example.demo.entity.Account;
+import com.example.demo.entity.OperationType;
+import com.example.demo.requestbody.TransactionRequestBody;
+import com.example.demo.service.OperationTypeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

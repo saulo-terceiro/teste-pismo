@@ -1,8 +1,9 @@
-package main.java.com.example.demo.service;
+package com.example.demo.service;
 
-import main.java.com.example.demo.entity.Account;
-import main.java.com.example.demo.exceptions.AccountValidadorException;
-import main.java.com.example.demo.repository.AccountRepository;
+
+import com.example.demo.entity.Account;
+import com.example.demo.exceptions.AccountValidadorException;
+import com.example.demo.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

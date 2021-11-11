@@ -1,6 +1,6 @@
-package main.java.com.example.demo.component;
+package com.example.demo.component;
 
-import main.java.com.example.demo.service.OperationTypeService;
+import com.example.demo.service.OperationTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;

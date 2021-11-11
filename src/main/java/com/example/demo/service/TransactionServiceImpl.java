@@ -1,12 +1,13 @@
-package main.java.com.example.demo.service;
+package com.example.demo.service;
 
-import main.java.com.example.demo.entity.Account;
-import main.java.com.example.demo.entity.OperationType;
-import main.java.com.example.demo.entity.Transaction;
-import main.java.com.example.demo.exceptions.AccountValidadorException;
-import main.java.com.example.demo.exceptions.TransactionValidadorException;
-import main.java.com.example.demo.repository.TransactionRepository;
-import main.java.com.example.demo.requestbody.TransactionRequestBody;
+
+import com.example.demo.entity.Account;
+import com.example.demo.entity.OperationType;
+import com.example.demo.entity.Transaction;
+import com.example.demo.exceptions.AccountValidadorException;
+import com.example.demo.exceptions.TransactionValidadorException;
+import com.example.demo.repository.TransactionRepository;
+import com.example.demo.requestbody.TransactionRequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

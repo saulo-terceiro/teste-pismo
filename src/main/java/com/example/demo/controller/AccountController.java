@@ -1,10 +1,11 @@
-package main.java.com.example.demo.controller;
+package com.example.demo.controller;
 
-import main.java.com.example.demo.entity.Account;
-import main.java.com.example.demo.service.AccountService;
-import main.java.com.example.demo.dtos.AccountResponseDto;
-import main.java.com.example.demo.dtos.ErrorDtoResponse;
-import main.java.com.example.demo.exceptions.AccountValidadorException;
+
+import com.example.demo.dtos.AccountResponseDto;
+import com.example.demo.dtos.ErrorDtoResponse;
+import com.example.demo.entity.Account;
+import com.example.demo.exceptions.AccountValidadorException;
+import com.example.demo.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

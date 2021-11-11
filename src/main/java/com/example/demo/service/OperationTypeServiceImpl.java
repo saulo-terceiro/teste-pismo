@@ -1,7 +1,8 @@
-package main.java.com.example.demo.service;
+package com.example.demo.service;
 
-import main.java.com.example.demo.entity.OperationType;
-import main.java.com.example.demo.repository.OperationTypeRepository;
+
+import com.example.demo.entity.OperationType;
+import com.example.demo.repository.OperationTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

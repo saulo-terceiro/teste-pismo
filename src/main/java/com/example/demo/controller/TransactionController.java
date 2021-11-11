@@ -1,10 +1,11 @@
-package main.java.com.example.demo.controller;
+package com.example.demo.controller;
 
-import main.java.com.example.demo.dtos.TransactionDtoResponse;
-import main.java.com.example.demo.requestbody.TransactionRequestBody;
-import main.java.com.example.demo.dtos.ErrorDtoResponse;
-import main.java.com.example.demo.exceptions.TransactionValidadorException;
-import main.java.com.example.demo.service.TransactionService;
+import com.example.demo.dtos.ErrorDtoResponse;
+import com.example.demo.dtos.TransactionDtoResponse;
+import com.example.demo.exceptions.TransactionValidadorException;
+import com.example.demo.requestbody.TransactionRequestBody;
+import com.example.demo.service.TransactionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

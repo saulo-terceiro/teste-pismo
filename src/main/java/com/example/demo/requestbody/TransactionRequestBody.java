@@ -1,4 +1,4 @@
-package main.java.com.example.demo.requestbody;
+package com.example.demo.requestbody;
 
 public class TransactionRequestBody {
 

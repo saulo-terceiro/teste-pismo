@@ -1,6 +1,7 @@
-package main.java.com.example.demo.dtos;
+package com.example.demo.dtos;
 
-import main.java.com.example.demo.entity.Transaction;
+
+import com.example.demo.entity.Transaction;
 
 import java.util.Date;
 

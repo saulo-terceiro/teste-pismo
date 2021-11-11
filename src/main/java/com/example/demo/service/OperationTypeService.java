@@ -1,6 +1,6 @@
-package main.java.com.example.demo.service;
+package com.example.demo.service;
 
-import main.java.com.example.demo.entity.OperationType;
+import com.example.demo.entity.OperationType;
 import org.springframework.stereotype.Service;
 
 @Service

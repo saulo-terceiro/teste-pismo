@@ -1,8 +1,9 @@
-package main.java.com.example.demo.service;
+package com.example.demo.service;
 
-import main.java.com.example.demo.entity.Transaction;
-import main.java.com.example.demo.requestbody.TransactionRequestBody;
-import main.java.com.example.demo.exceptions.TransactionValidadorException;
+
+import com.example.demo.entity.Transaction;
+import com.example.demo.exceptions.TransactionValidadorException;
+import com.example.demo.requestbody.TransactionRequestBody;
 import org.springframework.stereotype.Service;
 
 @Service
