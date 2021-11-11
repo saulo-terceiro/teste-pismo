@@ -1,4 +1,4 @@
-package test.java.com.example.demo.testcontroller;
+package com.example.demo.testcontroller;
 
 
 import com.example.demo.DemoApplication;
