@@ -57,6 +57,13 @@ public class ControllerTest {
         assertTrue(transactionDtoResponse.getAccountId().equals(accountResponseDto1.getIdAccount()));
         assertTrue(transactionDtoResponse.getAmount()==-45);
         assertTrue(transactionDtoResponse.getOperationTypeId().equals(OperationType.COMPRA_A_VISTA));
+
+        TransactionRequestBody transactionRequestBody5 = new TransactionRequestBody(accountResponseDto1.getIdAccount(),OperationType.PAGAMENTO,55);
+        TransactionDtoResponse transactionDtoResponse2 = (TransactionDtoResponse) transactionController.post(transactionRequestBody5).getBody();
+        assertTrue(transactionDtoResponse2.getTransactionId().equals(2L));
+        assertTrue(transactionDtoResponse2.getAccountId().equals(accountResponseDto1.getIdAccount()));
+        assertTrue(transactionDtoResponse2.getAmount()==55);
+        assertTrue(transactionDtoResponse2.getOperationTypeId().equals(OperationType.PAGAMENTO));
         TransactionRequestBody transactionRequestBody2 = new TransactionRequestBody(accountResponseDto1.getIdAccount()+1,OperationType.COMPRA_A_VISTA,45);
         TransactionRequestBody transactionRequestBody3 = new TransactionRequestBody(accountResponseDto1.getIdAccount()+1,OperationType.PAGAMENTO+1,45);
         TransactionRequestBody transactionRequestBody4 = new TransactionRequestBody(accountResponseDto1.getIdAccount()+1,OperationType.PAGAMENTO+1,-45);
