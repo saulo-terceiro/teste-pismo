@@ -12,8 +12,20 @@ public class Account {
     @Column(name = "Document_Number",nullable = false)
     private Long document_number;
 
-    public Account(Long document_number) {
+    @Column(name = "Credit_Limit", nullable = false)
+    private float credit_limit;
+
+    public float getCredit_limit() {
+        return credit_limit;
+    }
+
+    public void setCredit_limit(float credit_limit) {
+        this.credit_limit = credit_limit;
+    }
+
+    public Account(Long document_number, float credit_limit) {
         this.document_number = document_number;
+        this.credit_limit = credit_limit;
     }
 
     public Account() {

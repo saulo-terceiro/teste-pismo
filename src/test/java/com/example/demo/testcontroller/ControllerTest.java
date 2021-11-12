@@ -10,6 +10,7 @@ import com.example.demo.entity.Account;
 import com.example.demo.entity.OperationType;
 import com.example.demo.requestbody.TransactionRequestBody;
 import com.example.demo.service.OperationTypeService;
+import com.example.demo.service.TransactionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +33,22 @@ public class ControllerTest {
     @Autowired
     OperationTypeService operationTypeService;
 
+    @Autowired
+    TransactionService transactionService;
+
     @Test
     public void testAccountController(){
-        Account account = new Account(1293819839L);
+        Account account = new Account(1293819839L,1000);
         AccountResponseDto accountResponseDto1 = (AccountResponseDto) accountController.post(account).getBody();
         assertTrue(accountResponseDto1.getDocumentation_number().equals(1293819839L));
+        assertTrue(accountResponseDto1.getCreditLimit()==1000);
         AccountResponseDto accountResponseDto2 = (AccountResponseDto) accountController.get(accountResponseDto1.getIdAccount()).getBody();
         assertTrue(accountResponseDto2.getDocumentation_number().equals(1293819839L));
         assertTrue( accountController.get(3L).getStatusCode()== HttpStatus.BAD_REQUEST);
+
+        Account account2 = new Account(1293819839L,-1000);
+        assertTrue( accountController.post(account2).getStatusCode()== HttpStatus.BAD_REQUEST);
+
     }
 
 
@@ -48,7 +57,7 @@ public class ControllerTest {
 
 //        this.operationTypeService.insertOperationsType();
 
-        Account account = new Account(1293819L);
+        Account account = new Account(1293819L,2000);
         AccountResponseDto accountResponseDto1 = (AccountResponseDto) accountController.post(account).getBody();
 
         TransactionRequestBody transactionRequestBody = new TransactionRequestBody(accountResponseDto1.getIdAccount(),OperationType.COMPRA_A_VISTA,45);
@@ -73,6 +82,32 @@ public class ControllerTest {
         assertTrue( transactionController.post(transactionRequestBody4).getStatusCode()== HttpStatus.BAD_REQUEST);
 
 
+
+    }
+
+    @Test
+    public void testTransacoesSaldo(){
+        Account account1 = new Account(12938192L,100);
+        accountController.post(account1);
+
+        TransactionRequestBody transactionRequestBody1 = new TransactionRequestBody(account1.getId(),OperationType.COMPRA_A_VISTA,101);
+        assertTrue(transactionController.post(transactionRequestBody1).getStatusCode()== HttpStatus.BAD_REQUEST);
+
+        TransactionRequestBody transactionRequestBody2 = new TransactionRequestBody(account1.getId(),OperationType.COMPRA_A_VISTA,90);
+        transactionController.post(transactionRequestBody2);
+        assertTrue(transactionService.getSaldoDisponivel(account1.getId())==10);
+
+        TransactionRequestBody transactionRequestBody3 = new TransactionRequestBody(account1.getId(),OperationType.SAQUE,15);
+
+        assertTrue(transactionController.post(transactionRequestBody3).getStatusCode()== HttpStatus.BAD_REQUEST);
+
+        TransactionRequestBody transactionRequestBody4 = new TransactionRequestBody(account1.getId(),OperationType.PAGAMENTO,20);
+
+        transactionController.post(transactionRequestBody4);
+        assertTrue(transactionService.getSaldoDisponivel(account1.getId())==30);
+
+        TransactionDtoResponse transactionDtoResponse2 = (TransactionDtoResponse) transactionController.post(transactionRequestBody3).getBody();
+        assertTrue(transactionService.getSaldoDisponivel(account1.getId())==15);
 
 
 

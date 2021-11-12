@@ -37,8 +37,8 @@ public class AccountServiceImpl implements AccountService{
 
     public void validarAccount(Account account) throws AccountValidadorException {
         //validacao
-        if(false){
-            throw new AccountValidadorException("Conta invalida");
+        if(account.getCredit_limit()<0){
+            throw new AccountValidadorException("Valor de limite de credito negativo");
         }
 
     }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -25,6 +26,7 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Autowired
     TransactionRepository transactionRepository;
+
     @Override
     public Transaction post(TransactionRequestBody transactionRequestBody) throws TransactionValidadorException {
         this.validarTransaction(transactionRequestBody);
@@ -48,8 +50,9 @@ public class TransactionServiceImpl implements TransactionService{
             throw new TransactionValidadorException("Account não existe para esse ID");
         }
 
+        OperationType operationType;
         try{
-            operationTypeService.getOperationType(transactionRequestBody.getOperation_type_id());
+            operationType = operationTypeService.getOperationType(transactionRequestBody.getOperation_type_id());
         }catch (NoSuchElementException n){
             throw new TransactionValidadorException("Não existe esse tipo de operação");
         }
@@ -58,5 +61,23 @@ public class TransactionServiceImpl implements TransactionService{
             throw new TransactionValidadorException("Amount negativo é invalido");
         }
 
+        if(operationType.getTipo().equals(OperationType.TIPO_DEBITO)){
+            if(this.getSaldoDisponivel(transactionRequestBody.getAccount_id())<transactionRequestBody.getAmount()){
+                throw new TransactionValidadorException("O account não tem saldo suficiente");
+            }
+        }
+
+    }
+
+    public float getSaldoDisponivel(Long idAcount){
+
+        Account account =   accountService.getAccount(idAcount);
+        List<Transaction> transactionList = this.transactionRepository.findAllByAccount(account);
+        float saldoGasto = 0;
+        for (Transaction transaction:transactionList) {
+            saldoGasto = saldoGasto-transaction.getAmount();
+        }
+        saldoGasto = account.getCredit_limit()-saldoGasto;
+        return saldoGasto;
     }
 }

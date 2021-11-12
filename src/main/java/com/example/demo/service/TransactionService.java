@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TransactionService {
     Transaction post(TransactionRequestBody transactionRequestBody) throws TransactionValidadorException;
+
+    public float getSaldoDisponivel(Long idAccount);
 }
